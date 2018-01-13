@@ -29,8 +29,9 @@ prophet_prediction <- function(df, time_stamp = ds, response = y, period = 10, f
   )
 }
 
-prophet_prediction <- function(df, time_stamp = ds, response = y, period = 10, freq = 60*60) {
-  history <- cbind( ds = df$time_stamp, y = df$response)
-  print(history)}
-prophet_prediction(df_sample, time_stamp = ds, response = y)
+prophet_prediction <- function(df, time_stamp = "ds", response = "y", period = 10, freq = 60*60) {
+  history <- df %>% 
+    select_(.dots = c(time_stamp, response))
+  head(history)}
+prophet_prediction(df_sample, time_stamp = "ds", response = "y")
 
